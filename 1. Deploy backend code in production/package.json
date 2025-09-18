@@ -1,0 +1,16 @@
+{
+  "name": "1.-deploy-backend-code-in-production",
+  "version": "1.0.0",
+  "description": "a basic of app deploy",
+  "license": "ISC",
+  "author": "Prajwal Wankhede",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

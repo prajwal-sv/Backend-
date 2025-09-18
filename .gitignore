@@ -1,0 +1,59 @@
+# Node.js dependencies
+node_modules/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# IDE/editor configs
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Build and runtime artifacts
+dist/
+build/
+tmp/
+temp/
+coverage/
+.cache/
+
+# Database files (if using SQLite or local DB dumps)
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+dump.sql
+
+# Test output
+jest-test-results.json
+test-results/
+
+# Optional: ignore compiled TypeScript (if using TS)
+*.tsbuildinfo
+
+# Optional: ignore uploads or static assets
+uploads/
+public/assets/
+
+# Optional: ignore custom logs or debug files
+debug.log
+*.pid
+*.seed.js
+
+# Optional: ignore Docker artifacts
+docker-compose.override.yml
+*.env.docker
