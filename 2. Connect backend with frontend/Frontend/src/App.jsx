@@ -1,45 +1,53 @@
+// Import React hooks: useEffect and useState
 import { useEffect, useState } from 'react'
 
+// Import CSS file for styling
 import './App.css'
+
+// Import axios for making HTTP requests
 import axios from 'axios' ;
 
 function App() {
+  // Create a state variable 'jokes' and a function 'setjokes' to update it
   const [jokes, setjokes] = useState([])
 
-  useEffect(()=>{
+  // useEffect runs once when the component mounts
+  useEffect(() => {
+    // Make a GET request to the jokes API
     axios.get('/api/jokes')
-    .then((response)=>{
-      setjokes(response.data)
-    })
-    .catch((error)=>{
-
-      console.log(error)
-    })
-
-  })
+      .then((response) => {
+        // Store the received jokes in the state
+        setjokes(response.data)
+      })
+      .catch((error) => {
+        // Log any errors that occur during the request
+        console.log(error)
+      })
+  }, []) // Empty dependency array means this effect runs only once
 
   return (
     <>
-    <h1> this is jokes website</h1>
+      {/* Heading of the website */}
+      <h1>This is a jokes website</h1>
 
-    <p> JOKES : {jokes.length}</p>
-    {
+      {/* Display the total number of jokes */}
+      <p>JOKES: {jokes.length}</p>
 
-      jokes.map((joke)=>(
+      {/* Loop through the jokes array and display each joke */}
+      {
+        jokes.map((joke) => (
+          <div key={joke.id}>
+            {/* Display the joke title */}
+            <h3>{joke.title}</h3>
 
-      <div key={joke.id}>
-        
-        <h3>
-          {joke.title}
-        </h3>
-        <p>{joke.content}</p>
-         </div>
-
-      ))
-    }
-     
+            {/* Display the joke content */}
+            <p>{joke.content}</p>
+          </div>
+        ))
+      }
     </>
   )
 }
 
+// Export the App component so it can be used in other files
 export default App
