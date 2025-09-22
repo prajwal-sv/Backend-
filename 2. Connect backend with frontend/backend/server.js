@@ -12,7 +12,7 @@ const app = express();
 
 // Define a route for "/jokes"
 // This will send back an array of joke objects when accessed
-app.get('/jokes', (req, res) => {
+app.get('/api/jokes', (req, res) => {
   const jokes = [
     {
       id: 1,
