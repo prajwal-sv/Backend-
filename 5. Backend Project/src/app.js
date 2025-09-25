@@ -30,7 +30,17 @@ app.use(cookieParser());
 
 
 
+// routes  import
 
+// Importing the userRouter which contains all user-related route definitions
+import userRouter from "./routes/user.route.js";
+
+// Declaring routes
+// This is a standard practice for mounting route modules in Express
+app.use("/api/v1/users", userRouter);
+
+// Now you can access the registration endpoint at:
+// http://localhost:8000/api/v1/users/register
 
  
 export { app };
