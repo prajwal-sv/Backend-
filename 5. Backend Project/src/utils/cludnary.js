@@ -8,7 +8,7 @@ cloudinary.config({
     api_secret : process.env.CLOUDINARY_API_SECRET,
 });
 
-const uplodOnCloudnary =  async ()=>{
+const uplodOnCloudnary =  async (localFilePath)=>{
 
     try {
         if(!localFilePath) return null 
@@ -20,6 +20,7 @@ const uplodOnCloudnary =  async ()=>{
         //file has been uploded successfully
 
         console.log("file is uplodeed in cloudnary ", response.url)
+        fs.unlinkSync(localFilePath)
         return response;
     } catch (error) {
 

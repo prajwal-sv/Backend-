@@ -16,14 +16,15 @@ const registerUser = asyncHandler(async (req, res) => {
   // 7. Remove sensitive fields from response
   // 8. Return success response
 
-  const { email, username, fullName, password } = req.body;
-
-  console.log("email:", email);
-
+   const {fullName, email, username, password } = req.body
+    console.log("email: ", email);
   // Check for empty fields
-  if ([fullName, email, username, password].some((field) => field?.trim() === "")) {
-    throw new ApiError(400, "All fields are required");
-  }
+if (
+        [fullName, email, username, password].some((field) => field?.trim() === "")
+    ) {
+        throw new ApiError(400, "All fields are required")
+    }
+
 
   // Check if user already exists
   const existedUser = await User.findOne({
@@ -35,9 +36,9 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   // Get local file paths for avatar and cover image
-  const avatarLocalPath = req.files?.avatar?.[0]?.path;
-  const coverImageLocalPath = req.files?.coverImage?.[0]?.path;
-
+  const avatarLocalPath = req.files?.avatar[0]?.path;
+    const coverImageLocalPath = req.files?.coverImage[0]?.path;
+    
   if (!avatarLocalPath) {
     throw new ApiError(400, "Avatar file is required");
   }
@@ -53,14 +54,14 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   // Create user in DB
-  const user = await User.create({
-    fullName,
-    avatar: avatar.url,
-    coverImage: coverImage?.url || "",
-    email,
-    password,
-    username: username.toLowerCase()
-  });
+   const user = await User.create({
+        fullName,
+        avatar: avatar.url,
+        coverImage: coverImage?.url || "",
+        email, 
+        password,
+        username: username.toLowerCase()
+    })
 
   // Remove sensitive fields from response
   const createdUser = await User.findById(user._id).select("-password -refreshToken");
@@ -75,4 +76,4 @@ const registerUser = asyncHandler(async (req, res) => {
   );
 });
 
-export { registerUser };
+export { registerUser , };
